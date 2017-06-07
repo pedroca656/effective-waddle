@@ -53,7 +53,43 @@ import java.text.*;
  */
 public class FormattedTextFieldDemo extends JPanel
                                     implements PropertyChangeListener {
-    private FormattedTextFieldDemoData data = new FormattedTextFieldDemoData(100000, 7.5, 30);
+    private static final class ExitAction extends AbstractAction {
+    	public ExitAction(){
+    		super("Exit!");
+    	}
+    	
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.print("EXIT!");
+			
+		}
+	}
+
+	private static final class NewAction extends AbstractAction {
+		public NewAction(){
+    		super("New!");
+    	}
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("NEW!");
+			
+		}
+	}
+
+	private static final class AboutAction extends AbstractAction {
+		public AboutAction(){
+    		super("About!");
+    	}
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			// TODO Auto-generated method stub
+			System.out.println("ABOUT!");
+		}
+	}
+
+	private FormattedTextFieldDemoData data = new FormattedTextFieldDemoData(100000, 7.5, 30);
 	//Labels to identify the fields
     private JLabel amountLabel;
     private JLabel rateLabel;
@@ -164,9 +200,16 @@ public class FormattedTextFieldDemo extends JPanel
         JFrame frame = new JFrame("FormattedTextFieldDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //
-        JMenuItem newItem = new JMenuItem("New");
-        JMenuItem exitItem = new JMenuItem("Exit");
-        JMenuItem aboutItem = new JMenuItem("About");
+        NewAction newAction = new NewAction();
+		JMenuItem newItem = new JMenuItem(newAction);
+		
+        ExitAction exitAction = new ExitAction();
+		JMenuItem exitItem = new JMenuItem(exitAction);
+		
+        AboutAction aboutAction = new AboutAction();
+		JMenuItem aboutItem = new JMenuItem(aboutAction);
+        
+        
         
         JMenu file = new JMenu("File");
         JMenu help = new JMenu("Help");
