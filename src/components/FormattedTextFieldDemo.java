@@ -161,7 +161,25 @@ public class FormattedTextFieldDemo extends JPanel
         //Create and set up the window.
         JFrame frame = new JFrame("FormattedTextFieldDemo");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        //
+        JMenuItem newItem = new JMenuItem("New");
+        JMenuItem exitItem = new JMenuItem("Exit");
+        JMenuItem aboutItem = new JMenuItem("About");
+        
+        JMenu file = new JMenu("File");
+        JMenu help = new JMenu("Help");
+        
+        file.add(newItem);
+        file.addSeparator();
+        file.add(exitItem);
+        
+        help.add(aboutItem);
+        
+        JMenuBar menuBar = new JMenuBar();
+        menuBar.add(file);
+        menuBar.add(help);
+        frame.setJMenuBar(menuBar);
+        
         //Add contents to the window.
         frame.add(new FormattedTextFieldDemo());
 
