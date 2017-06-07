@@ -38,6 +38,8 @@ import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.text.*;
 
+import javafx.scene.control.Button;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 
@@ -176,6 +178,15 @@ public class FormattedTextFieldDemo extends JPanel
         help.add(aboutItem);
         
         JMenuBar menuBar = new JMenuBar();
+        
+        JToolBar toolBar = new JToolBar("Teste");
+        toolBar.add(new JButton("New"));
+        toolBar.add(new JButton("Exit"));
+        toolBar.add(new JButton("About"));
+        toolBar.setFloatable(false);
+        toolBar.setRollover(true);
+        frame.add(toolBar, BorderLayout.PAGE_START);
+        
         menuBar.add(file);
         menuBar.add(help);
         frame.setJMenuBar(menuBar);
